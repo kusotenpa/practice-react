@@ -1,11 +1,14 @@
-import React, { Proptypes } from 'react';
+import React, { PropTypes } from 'react';
 
-const Todo = ({ text }) => (
-  <li>
+const Todo = ({ completed, text }) => (
+  <li style={{textDecoration: completed ? 'line-through' : 'none'}}>
     {text}
   </li>
 );
 
 Todo.propTypes = {
-  text: Proptypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
 };
+
+export default Todo;
