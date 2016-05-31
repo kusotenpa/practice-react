@@ -1,13 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-import todo from './redux/reducers';
-import { addTodo } from './redux/actions';
+import configureStore from './store';
+import { addTodo } from './actions';
 import App from './components/app';
 
-let store = createStore(todo);
+let store = configureStore();
 store.dispatch(addTodo('hello world'));
 store.dispatch(addTodo('hello world'));
 

@@ -7,10 +7,22 @@ export const addTodo = text => {
   };
 };
 
-
 export const toggleTodo = id => {
   return {
     type: 'TOGGLE_TODO',
     id,
+  };
+};
+
+export const setVisiblityFilter = filter => {
+  return {
+    type: 'SET_VISIBILITY_FILTER',
+    filter,
+  };
+};
+
+export const requestTodos = () => {
+  return {
+    type: 'REQUEST_TODOS',
   };
 };

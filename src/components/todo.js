@@ -3,7 +3,10 @@ import React, { PropTypes } from 'react';
 const Todo = ({ onClick, completed, text }) => (
   <li
     onClick={onClick}
-    style={{textDecoration: completed ? 'line-through' : 'none'}}
+    style={{
+      textDecoration: completed ? 'line-through' : 'none',
+      display: 'block',
+    }}
   >
     {text}
   </li>
