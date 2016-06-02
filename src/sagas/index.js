@@ -1,16 +1,21 @@
 import { take, put, call, fork, select } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
 
-import { requestTodos } from '../actions';
+import * as actions from '../actions';
 
-function* startUp() {
+function fetchTodosApi() {
   return fetch('/api/getComments')
     .then(res => res.json())
-    .then(json => {
-      console.log(json);
-    });
+}
+
+function* fetchTodos() {
+  yield take(actions.REQUEST_TODOS);
+  const todos = yield call(fetchTodosApi);
+  yield todos.map(function* (t) {
+    yield put(actions.addTodo(t));
+  });
 }
 
 export default function* rootSaga() {
-  yield fork(startUp);
+  yield fork(fetchTodos);
 }

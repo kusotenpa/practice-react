@@ -12,7 +12,10 @@ let AddTodo = ({ dispatch }) => {
       }} />
 
       <button onClick={() => {
-        dispatch(addTodo(input.value));
+        dispatch(addTodo({
+          text: input.value,
+          completed: false,
+        }));
         input.value = '';
       }}>
         Add Todo

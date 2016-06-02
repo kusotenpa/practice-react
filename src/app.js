@@ -3,12 +3,12 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import configureStore from './store';
-import { addTodo } from './actions';
 import App from './components/app';
+import * as actions from './actions';
+
 
 let store = configureStore();
-store.dispatch(addTodo('hello world'));
-store.dispatch(addTodo('hello world'));
+store.dispatch(actions.requestTodos());
 
 render(
   <Provider store={store}>
